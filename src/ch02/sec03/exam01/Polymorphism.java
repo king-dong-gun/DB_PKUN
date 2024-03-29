@@ -1,12 +1,14 @@
-package ch02;
+package ch02.sec03.exam01;
 
 public class Polymorphism {
     public static void main(String[] args) {
         Custom custom = new Custom();
         Espresso espresso = new Espresso();
         Americano americano = new Americano();
+        IceTeaShotPlus iceteaShotPlus = new IceTeaShotPlus();
         custom.buyCoffee(americano);
         custom.buyCoffee(espresso);
+        custom.buyCoffee(iceteaShotPlus);
         System.out.println("커피 구입 후 남은 잔액 >>  " + custom.money);
     }
 }
@@ -24,6 +26,7 @@ class Custom {
     }
 }
 
+// 맴버변수
 class Coffee {
     int price;
 }
@@ -37,5 +40,11 @@ class Espresso extends Coffee {
 class Americano extends Coffee {
     public Americano() {
         price = 3000;
+    }
+}
+
+class IceTeaShotPlus extends Coffee {
+    public IceTeaShotPlus() {
+        price = 3500;
     }
 }
