@@ -1,6 +1,6 @@
-# DB 오라클 SQL 학습
-## Day01
-### 시작전 오라클 설치
+# Day01
+## DB 오라클 SQL 학습
+### 시작전 오라클 설치 (for Mac Os)
 1. Docker를 통해 Oracle Database 21c 설치하기
 > Oracle은 MacOS를 정식 지원하지 않으므로 Mac에서 Oracle Database를 설치하기 위해서는 별도의 절차가 필요하다.
 2. Colima 설치
@@ -55,3 +55,25 @@ docker logs -f (컨테이너명)
 #### SQL Plus
 - `docker exec -it oracle2 sqlplus`
     - sql plus 나가는법 : `quit;`
+
+### DDL(Data Definition Language)
+> 데이터 정의어란? 데이터베이스를 정의하는 언어
+> 데이터를 생성, 수정, 삭제하는 등의 데이터의 전체의 골격을 결정하는 역할을 하는 언어
+- `create` : 데이터베이스, 테이블등을 생성
+- `alter` : 테이블을 수정
+- `drop` : 데이터베이스, 테이블을 삭제
+- `truncate` : 테이블을 초기화
+
+### DML(Data Manipulation Language)
+> 데이터 조작어란? 정의된 데이터베이스에 입력된 레코드를 조회하거나 수정하거나 삭제하는 등의 역할을 하는 언어
+- `select` : 데이터 조회
+- `insert` : 데이터 삽입
+- `update` : 데이터 수정
+- `delete` : 데이터 삭제
+
+### DCL(Data Control Language)
+> 데이터베이스에 접근하거나 객체에 권한을 주는등의 역할을 하는 언어
+- `grant` : 특정 데이터베이스 사용자에게 특정 작업에 대한 수행 권한을 부여
+- `revoke` : 특정 데이터베이스 사용자에게 특정 작업에 대한 수행 권한을 박탈, 회수
+- `commit` : 트랜잭션의 작업을 저장
+- `rollback` : 트랜잭션의 작업을 취소, 원래대로 복구
