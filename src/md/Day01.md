@@ -39,3 +39,19 @@ docker ps
 docker logs -f (컨테이너명)
 ```
 > `docker logs`로 로그를 확인했을 때 조금 기다린 뒤 “DATABASE IS READY TO USE!”가 뜨면 성공!!!
+
+### 실행순서
+1. `colima start --memory 4 --arch x86_64`
+2. `docker ps` -> 컨테이너 띄어져 있는지 확인
+3. `docker start oracle2` -> 컨테이너 띄우기
+4. `docker ps` -> oracle2 가 띄어져있는지 확인
+
+### 종료순서
+1. `docker ps` -> 컨테이너 띄어져있는거 확인
+2. `docker stop oracle2` -> 컨테이너 종료
+3. `docker ps` -> 종료됐는지 확인
+4. `colima stop` -> colima 종료
+
+#### SQL Plus
+- `docker exec -it oracle2 sqlplus`
+    - sql plus 나가는법 : `quit;`
