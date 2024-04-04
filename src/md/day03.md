@@ -38,7 +38,7 @@ SELECT INSTR('HELLO, ORACLE!', 'L')       AS instr1, -- 전체 문자열에서 L
 FROM dual;
 ```
 
-> 출력결과: instr1: 3, instr2 >> 12, inbstr3 >> 4
+
 
 - `REPLACE`:  문자열 내에서 특정 문자 또는 패턴을 다른 문자 또는 패턴으로 대체하는 데 사용
 
