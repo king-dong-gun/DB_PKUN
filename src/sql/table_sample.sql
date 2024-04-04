@@ -1,14 +1,14 @@
 -- emp 테이블 생성
 CREATE TABLE emp
 (
-    empno    NUMBER(4) NOT NULL,
-    ENAME    VARCHAR(2),
-    JOB      VARCHAR2(9),
-    MGR      NUMBER(4),
-    HIREDATE DATE,
-    SAL      NUMBER(7, 2),
-    COMM     NUMBER(7, 2),
-    DEPTNO   NUMBER(2)
+    empno    NUMBER(4) NOT NULL,    -- 사원번호
+    ENAME    VARCHAR(2),            -- 사원명
+    JOB      VARCHAR2(9),           -- 직무
+    MGR      NUMBER(4),             -- 직속상관
+    HIREDATE DATE,                  -- 입사일
+    SAL      NUMBER(7, 2),          -- 급여
+    COMM     NUMBER(7, 2),          -- 수당
+    DEPTNO   NUMBER(2)              -- 부서번호
 );
 commit;
 
