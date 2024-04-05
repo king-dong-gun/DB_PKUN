@@ -19,7 +19,7 @@ CREATE TABLE EMP (
 ```java
 SELECT * FROM emp;
 ```
-- `insert into table values(칼럼 값 1, 2, 3)` : 테이블 값 집어넣기
+- `INSERT INTO TABLE VALUES(칼럼 값 1, 2, 3)` : 테이블 값 집어넣기
 ```java
 INSERT INTO emp VALUES (7369, 'SMITH', 'CLERK', 7902, to_date('17_12_1980', 'dd-mm-yyyy'), 800, NULL, 20);
 ```
@@ -43,20 +43,18 @@ SELECT DISTINCT job FROM emp e;
 ```java
 SELECT 1||5 FROM dual;
 ```
-> 출력결과 : 15
 
 - `SELECT 칼럼1 + '칼럼2' FROM dual` : 칼럼1과 칼럼2 더하기
 ```java
 SELECT 1 + '5' FROM dual;
 ```
-> 출력결과 : 6
 
 - `SELECT * FROM 테이블 ORDER BY 칼럼명` : 테이블의 칼럼명 오름차순 정리
 - `SELECT * FROM 테이블 ORDER BY 칼럼명 DESC` : 테이블의 칼럼명 내림차순 정리
 
 - `where` : 조건을 부여
 ```java
-select * from emp e where EMPNO = 7839;
+SELECT * FROM emp e WHERE EMPNO = 7839;
 ```
 > EMPNO가 8739인 사람 출력
 

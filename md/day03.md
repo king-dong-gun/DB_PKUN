@@ -20,7 +20,7 @@
 
 ### 문자열 함수
 
-- `substr` : substr(칼럼, 문자열 시작점, 출력 갯수)
+- `SUBSTR` : SUBSTR(칼럼, 문자열 시작점, 출력 갯수)
 
 ```oracle
 SELECT JOB, SUBSTR(JOB, 1, 2), SUBSTR(JOB, 3, 2), SUBSTR(JOB, 5)
@@ -29,7 +29,7 @@ FROM EMP e;
 
 > 출력결과: JOB: SALEMAN, substr(JOB,1, 2) >> SA, substr(JOB, 3, 2) >> LE, substr(JOB, 5) >> MAN
 
-- `instr` : instr('문자열', 시작점, 문자열n번째)
+- `INSTR` : INSTR('문자열', 시작점, 문자열n번째)
 
 ```oracle
 SELECT INSTR('HELLO, ORACLE!', 'L')       AS instr1, -- 전체 문자열에서 L 찾기
