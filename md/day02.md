@@ -2,7 +2,7 @@
 ## DB 오라클 SQL 학습
 ### 명령어 학습
 - `create table 테이블명` : 테이블 생성
-```java
+```oracle
 CREATE TABLE EMP (
     EMPNO       NUMBER(4) NOT NULL,     -- 사원번호
     ENAME       VARCHAR2(10),           -- 사원이름 (VARCHAR2(10)으로 수정)
@@ -16,36 +16,36 @@ CREATE TABLE EMP (
 ```
 
 - `SELECT * FROM` : 테이블 생성 확인
-```java
+```oracle
 SELECT * FROM emp;
 ```
 - `INSERT INTO TABLE VALUES(칼럼 값 1, 2, 3)` : 테이블 값 집어넣기
-```java
+```oracle
 INSERT INTO emp VALUES (7369, 'SMITH', 'CLERK', 7902, to_date('17_12_1980', 'dd-mm-yyyy'), 800, NULL, 20);
 ```
 
 - `COMMIT` : 변경사항 저장
 
 - `SELECT 칼럼1, 칼럼2 From 테이블` : 필요 행만 가져오기
-```java
+```oracle
 SELECT empno, ename, sal FROM emp;
 ```
 - `SELECT 칼럼1 "변경내용" FROM emp;` : 칼럼1의 내용을 변경
-```java
+```oracle
 SELECT empno "사원번호", ename"이름",sal"월급", sal*12"연봉" FROM emp;
 ```
 
 - `SELECT DISTINCT 칼럼명 FROM 테이블` : 중복데이터 제거
-```java
+```oracle
 SELECT DISTINCT job FROM emp e;
 ```
 - `SELECT 칼럼1||칼럼2 FROM dual` : 칼럼1과 칼럼2 붙여쓰기
-```java
+```oracle
 SELECT 1||5 FROM dual;
 ```
 
 - `SELECT 칼럼1 + '칼럼2' FROM dual` : 칼럼1과 칼럼2 더하기
-```java
+```oracle
 SELECT 1 + '5' FROM dual;
 ```
 
@@ -53,7 +53,7 @@ SELECT 1 + '5' FROM dual;
 - `SELECT * FROM 테이블 ORDER BY 칼럼명 DESC` : 테이블의 칼럼명 내림차순 정리
 
 - `where` : 조건을 부여
-```java
+```oracle
 SELECT * FROM emp e WHERE EMPNO = 7839;
 ```
 > EMPNO가 8739인 사람 출력
