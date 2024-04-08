@@ -1,0 +1,219 @@
+-- day04 이어서
+
+-- DEPT_TMP 테이블 조회
+SELECT *
+FROM DEPT_TMP;
+
+-- UPDATE ~ SET
+
+-- 해당 열 전체 수정
+UPDATE DEPT_TMP
+SET LOC = 'SEOUL';
+
+UPDATE DEPT_TMP
+SET DNAME = 'DATABASE',
+    LOC   = 'BUSAN'
+WHERE DEPTNO = 40;
+
+-- 서브쿼리를 활용한 데이터 수정
+UPDATE DEPT_TMP
+SET (DNAME, LOC) = (SELECT DNAME, LOC FROM DEPT WHERE DEPTNO = 40)
+WHERE DEPTNO = 40;
+
+
+/* 삭제 DELETE */
+DELETE
+FROM EMP_TMP
+WHERE JOB = 'SALESMAN';
+
+SELECT *
+FROM EMP_TMP;
+
+-- 서브쿼리 삭제
+DELETE
+FROM EMP_TMP; -- DATA 삭제
+
+SELECT *
+FROM EMP_TMP;
+
+DROP TABLE EMP_TMP;
+-- 테이블 삭제 (DROP TABLE [테이블 명])
+
+/* 트랜잭션 TRANSACTION */
+
+-- 테이블 조회
+SELECT *
+FROM DEPT_TCL;
+
+-- 데이터 추가
+INSERT INTO DEPT_TCL
+VALUES (50, 'DATABASE', 'BUSAN');
+
+UPDATE DEPT_TCL
+SET LOC = 'BUSAN'
+WHERE DEPTNO = 40;
+
+DELETE
+FROM DEPT_TCL
+WHERE DNAME = 'RESEARCH';
+
+-- 트랜잭션이 실행중일 때는 LOCK이 걸린다.
+-- 뒤로가기, 트랜잭션 취소
+ROLLBACK;
+-- 저장, 트랜잭션 반영
+COMMIT;
+
+DROP TABLE DEPT_TCL;
+
+/* VIEW */
+-- 뷰 조회
+SELECT *
+FROM VM_EMP;
+
+-- 뷰 생성
+CREATE VIEW VM_EMP AS
+(
+SELECT EMPNO, ENAME, JOB, DEPTNO
+FROM EMP
+WHERE DEPTNO = 20);
+
+SELECT *
+FROM USER_VIEWS;
+
+-- 뷰 삭제
+DROP VIEW VM_EMP;
+
+-- 테이블, 데이터사전, 인덱스, 뷰, 시퀀스, 동의어
+/* 데이터사전 */
+-- 사용 가능한 데이터 사전 목록
+SELECT *
+FROM DICT;
+
+-- 현재 접속자(ADMA)이 가지고있는 테이블 목록
+SELECT TABLE_NAME
+FROM USER_TABLES;
+
+-- 현재 접속자가 접속 가능한 모든 테이블 목록
+SELECT OWNER, TABLE_NAME
+FROM ALL_ALL_TABLES;
+
+-- 권리권한의 사용자만 접근 가능한 목록
+SELECT *
+FROM DBA_TABLES;
+
+/* 시퀀스 */
+-- 테이블 조회
+SELECT *
+FROM DEPT_SEQ;
+
+DROP TABLE DEPT_SEQ;
+
+-- 시퀀스 조회
+SELECT *
+FROM USER_SEQUENCES;
+
+-- 시퀀스명.NEXTVAL
+-- SEQ_DEPT_SEQUENCE 시퀀스에서 다음 값을 가져와서 DEPTNO에 삽입합니다.
+INSERT INTO DEPT_SEQ(DEPTNO, DNAME, LOC)
+VALUES (SEQ_DEPT_SEQUENCE.NEXTVAL, 'DATABASE', 'BUSAN');
+
+SELECT *
+FROM DEPT_SEQ
+ORDER BY DEPTNO;
+
+INSERT INTO DEPT_SEQ(DEPTNO, DNAME, LOC)
+VALUES (SEQ_DEPT_SEQUENCE.NEXTVAL, 'DATABASE', 'SEOUL');
+
+SELECT SEQ_DEPT_SEQUENCE.CURRVAL
+FROM DUAL;
+
+-- 시퀀스 수정
+ALTER SEQUENCE SEQ_DEPT_SEQUENCE
+    INCREMENT BY 3
+    MAXVALUE 99
+    CYCLE;
+
+-- 시퀀스 삭제
+DROP SEQUENCE SEQ_DEPT_SEQUENCE;
+
+/* DDL */
+
+-- 테이블 조회
+SELECT *
+FROM EMP_DDL1;
+
+-- 테이블 조회
+SELECT *
+FROM EMP_DDL2;
+
+-- 테이블 수정
+ALTER TABLE EMP_DDL1
+    ADD HP VARCHAR2(20); -- 열 추가
+
+ALTER TABLE EMP_DDL1
+    RENAME COLUMN HP TO TEL;
+-- 컬럼명 변경
+
+-- 저장
+COMMIT;
+
+-- 자료형 변경
+ALTER TABLE EMP_DDL1
+    MODIFY EMPNO NUMBER(10);
+
+-- TEL 열 삭제
+ALTER TABLE EMP_DDL1
+    DROP COLUMN TEL;
+
+-- 테이블의 모든 데이터 삭제
+TRUNCATE TABLE EMP_DDL1;
+
+-- 테이블 삭제
+DROP TABLE EMP_DDL;
+DROP TABLE EMP_DDL1;
+DROP TABLE EMP_DDL2;
+
+/* 제약조건 */
+
+-- 테이블 조회
+SELECT *
+FROM TBL_EX;
+
+-- 데이터 추가
+INSERT INTO TBL_EX(LOGIN_ID, LOGIN_PW, TEL)
+VALUES ('AAAA', '1234', NULL);
+
+INSERT INTO TBL_EX(LOGIN_ID, LOGIN_PW, TEL)
+VALUES ('BBBB', 'NULL', NULL);
+
+-- 이미 NULL값이므로 사용 설정 불가
+ALTER TABLE TBL_EX
+    MODIFY TEL NOT NULL;
+
+-- AAAA 칼럼 수정
+UPDATE TBL_EX
+SET TEL = '010-1111-1111'
+WHERE LOGIN_ID = 'AAAA';
+
+-- 사용자가 소유한 제약 조건에 대한 정보 가져오기
+SELECT OWNER, CONSTRAINT_NAME, CONSTRAINT_TYPE, TABLE_NAME
+-- OWNER 열은 제약 조건을 소유한 스키마를 나타냄
+-- CONSTRAINT_NAME 열은 제약 조건의 이름을 나타냄
+-- CONSTRAINT_TYPE 열은 각 제약 조건의 유형을 나타냄
+-- TABLE_NAME 열은 제약 조건이 적용된 테이블의 이름을 나타냄
+FROM USER_CONSTRAINTS;
+
+-- EMP 또는 DEPT 테이블에 적용된 제약 조건에 대한 정보 가져오기
+SELECT OWNER, CONSTRAINT_NAME, CONSTRAINT_TYPE, TABLE_NAME, R_OWNER, R_CONSTRAINT_NAME
+FROM USER_CONSTRAINTS
+WHERE TABLE_NAME IN ('EMP', 'DEPT');
+
+/* CHECK */
+-- 정규표현식
+-- 010 - [1-5] [0-9][0-9][0-9][0-9][0-9][0-9][0-9]
+-- 010 - \d\d\d\d - \d\d\d\d
+-- ^010 - \d{4} - \d{4}$
+
+
+
+

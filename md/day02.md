@@ -53,10 +53,10 @@ SELECT 1 + '5' FROM dual;
 - `SELECT * FROM 테이블 ORDER BY 칼럼명 DESC` : 테이블의 칼럼명 내림차순 정리
 
 - `where` : 조건을 부여
+- > EMPNO가 8739인 사람 출력
 ```oracle
 SELECT * FROM emp e WHERE EMPNO = 7839;
 ```
-> EMPNO가 8739인 사람 출력
 
 > 비교연산자
 - `=` : 같은값 출력
