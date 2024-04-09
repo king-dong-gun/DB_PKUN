@@ -49,7 +49,7 @@ DROP TABLE 테이블명;
 2. `ROLLBACK`:
 
 
-![트랜잭션 롤백](https://github.com/king-dong-gun/PKUN_DB/assets/160683545/abf28d3f-7d91-4051-9753-b47f7541c39d)
+   ![트랜잭션 롤백](https://github.com/king-dong-gun/PKUN_DB/assets/160683545/abf28d3f-7d91-4051-9753-b47f7541c39d)
 
 
 

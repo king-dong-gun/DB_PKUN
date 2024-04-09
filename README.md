@@ -36,4 +36,9 @@
 5. DDL
 6. 제약조건
 
+## [Day06](https://github.com/king-dong-gun/PKUN_DB/blob/master/src/md/day06.md)
+### DataBase 기초 학습
+1. 문제풀이
+2. JDBC 연동하기
+
 

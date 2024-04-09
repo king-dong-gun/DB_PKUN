@@ -27,7 +27,9 @@ SELECT JOB, SUBSTR(JOB, 1, 2), SUBSTR(JOB, 3, 2), SUBSTR(JOB, 5)
 FROM EMP e;
 ```
 
-> 출력결과: JOB: SALEMAN, substr(JOB,1, 2) >> SA, substr(JOB, 3, 2) >> LE, substr(JOB, 5) >> MAN
+![substr출력결과](https://github.com/king-dong-gun/PKUN_DB/assets/160683545/49ec9e3b-ebb0-4366-9536-c68074e60f5d)
+
+
 
 - `INSTR` : INSTR('문자열', 시작점, 문자열n번째)
 
@@ -49,7 +51,9 @@ SELECT '010-1234-5678'
 FROM dual;
 ```
 
-> 출력결과 : 010 1234 5678
+![replace출력결과](https://github.com/king-dong-gun/PKUN_DB/assets/160683545/ebbec923-e693-4427-86be-124820fd855e)
+
+
 
 - `LPAD`, `RPAD`: 지정된 길이에 도달할 때까지 지정된 문자로 문자열을 채우는 데 사용
     - LPAD('문자열', 문자열 총 갯수, '채울 문자') AS 칼럼

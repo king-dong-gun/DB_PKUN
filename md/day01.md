@@ -9,8 +9,8 @@
 ```java
 brew install colima
 ```
-4. Docker 설치
-5. > Docker DeskTop을 직접 설치한게 아니라면 터미널에 다음과 같이 명령을 입력한다.
+4. Docker 설치 
+5. Docker DeskTop을 직접 설치한게 아니라면 터미널에 다음과 같이 명령을 입력한다.
 ```java
 brew install docker
 ```
